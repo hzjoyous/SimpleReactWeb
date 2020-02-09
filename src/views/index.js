@@ -1,3 +1,5 @@
 export { default as Home } from './Home'
+export { default as SimpleMap } from './SimpleMap'
+export { default as MathFunction } from './MathFunction'
 export { default as About } from './About'
 export { default as NotFound } from './NotFound'
