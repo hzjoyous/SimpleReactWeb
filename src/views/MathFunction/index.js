@@ -61,26 +61,42 @@ export default class index extends Component {
                 name: "y=1/x,(x>0)",
                 func: (x) => {
                     if (Math.abs(x) < 0.0001) {
-                        console.log(x)
                         return null
                     }
                     return 1 / x
                 }
             },
             {
+                name: "y=tan(x)",
+                func: (x) => {
+                    // Math.PI/2 +Math.PI*x
+                    if (Math.abs((x - Math.PI / 2) % Math.PI) < 0.01) {
+                        return null
+
+                    }
+                    return Math.tan(x)
+                }
+            },
+            {
                 name: "y=arccos(x)",
+                minx: 0,
+                maxx: Math.PI,
                 func: (x) => {
                     return Math.acos(x)
                 }
             },
             {
                 name: "y=arcsin(x)",
+                minx: -Math.PI,
+                maxx: Math.PI,
                 func: (x) => {
                     return Math.asin(x)
                 }
             },
             {
                 name: "y=arctan(x)",
+                minx: -Math.PI,
+                maxx: Math.PI,
                 func: (x) => {
                     return Math.atan(x)
                 }
@@ -164,8 +180,8 @@ export default class index extends Component {
             yAxis.push({
                 gridIndex: num,
                 name: 'y',
-                min: -12,
-                max: 12,
+                min: -12,//typeof mathFunction.minx === 'undefined'? -12:mathFunction.minx,
+                max: 12,//typeof mathFunction.maxx === 'undefined'? 12:mathFunction.maxx,
 
                 minorTick: {
                     show: true
@@ -182,7 +198,6 @@ export default class index extends Component {
                     }
                 }
             })
-
             num += 1
             if (num % 2 === 0) {
                 optionHeight += baseHeight + baseInterval
@@ -196,6 +211,22 @@ export default class index extends Component {
 
         var baseOption = {
             title: titleList,
+
+            dataZoom: [{
+                show: true,
+                type: 'inside',
+                filterMode: 'none',
+                xAxisIndex: [0],
+                startValue: -20,
+                endValue: 20
+            }, {
+                show: true,
+                type: 'inside',
+                filterMode: 'none',
+                yAxisIndex: [0],
+                startValue: -20,
+                endValue: 20
+            }],
             tooltip: {},
             xAxis: xAxis,
             yAxis: yAxis,
