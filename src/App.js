@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import { Route, NavLink as Link, Redirect, Switch } from 'react-router-dom'
 import {
     Home,
-    SimpleMap,
     NotFound,
-    About,
-    MathFunction
 } from './views'
-import './App.css'
-
+import { Menu, Icon, BackTop } from 'antd'
+import './App.less'
+import { mainRoute, simpleRoute } from './routes'
 
 export default class App extends Component {
+
     constructor() {
         super()
         if (document.hidden !== undefined) {
@@ -30,21 +29,27 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="App" style={{ margin: '0 auto' ,width:"100%",height:"100%"}}>
-                <ul style={{margin: '0 auto' }}>
-                    <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/simpleMap">SimpleMap</Link></li>
-                    <li><Link to="/mathFunction">初等函数</Link></li>
-                    <li><Link to="/404">NotFound</Link></li>
-                </ul>
-                <Switch>
+            <div className="App" style={{ margin: '0 auto', width: "100%", height: "100%" }}>
 
+                <Menu mode="horizontal">
+                    <Menu.Item><Link to="/home"><Icon type="home" />Home</Link></Menu.Item>
+                    <Menu.Item><Link to="/simpleMap"><Icon type="fire" />SimpleMap</Link></Menu.Item>
+                    <Menu.Item><Link to="/mathFunction"><Icon type="fire" />初等函数</Link></Menu.Item>
+                    <Menu.Item><Link to="/about"><Icon type="fire" />About</Link></Menu.Item>
+                    <Menu.Item><Link to="/404"><Icon type="fire" />NotFound</Link></Menu.Item>
+                </Menu>
+                <BackTop />
+
+                <Switch>
+                    <Route path="/admin"/>
+                    {
+                        simpleRoute.map((route)=>{
+                            return <Route component={route.component} path={route.pathname}></Route>
+                        })
+                    }
                     <Route component={Home} path="/home" />
-                    <Route component={SimpleMap} path="/simpleMap" />
-                    <Route component={About} path="/about" />
                     <Route component={NotFound} path="/404" />
-                    <Route component={MathFunction} path="/mathFunction" />
+
 
                     <Redirect to="/home" from="/" exact />
                     <Redirect to="/404" />

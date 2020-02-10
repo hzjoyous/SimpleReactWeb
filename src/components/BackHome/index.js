@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { Button } from 'antd'
 
 class BackHome extends Component {
     goHome = () => {
@@ -12,7 +13,7 @@ class BackHome extends Component {
     }
     render() {
         return (
-            <button onClick={this.goHome}>返回首页</button>
+            <Button onClick={this.goHome}>返回首页</Button>
         )
     }
 }
