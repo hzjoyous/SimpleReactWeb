@@ -8,11 +8,15 @@ import {
     Test
 } from '@/views'
 
-export const mainRoute = [
+export const adminRoute = [
     {
         pathname: '/admin',
         component: Admin
-    }, {
+    }
+]
+
+export const mainRoute = [
+    {
         pathname: '/home',
         component: Home
     }, {
