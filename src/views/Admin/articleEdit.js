@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-export default class index extends Component {
+
+export default class articleEdit extends Component {
     render() {
         return (
             <div>
-                
+                articleEdit
             </div>
         )
     }

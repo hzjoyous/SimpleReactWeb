@@ -16,9 +16,11 @@
 - three3.js(这个与上述三个不同)
 - antd
 - qrcode.react
-
+- office-ui-fabric-react
 
 
 `https://github.com/zpao/qrcode.react`
 
-https://www.thinktxt.com/react/2017/02/26/react-router-browserHistory-refresh-404-solution.html
+[](https://www.thinktxt.com/react/2017/02/26/react-router-browserHistory-refresh-404-solution.html)
+
+[](https://developer.microsoft.com/zh-cn/fabric#/controls/web)

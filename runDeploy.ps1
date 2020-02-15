@@ -1,4 +1,4 @@
-npm run build
+yarn run build
 Set-Location build
 git init
 git add -A
