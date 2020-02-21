@@ -16,7 +16,7 @@ const NotFound = Loadable(() => import('./NotFound'))
 const SimpleMap = Loadable(() => import('./SimpleMap'))
 const Test = Loadable(() => import('./Test'))
 const Simple = Loadable(() => import('./Simple'))
-const Login = Loadable(() => import('./Login'))
+const Login = Loadable(() => import('./Login/login'))
 const Three = Loadable(() => import('./Three'))
 
 export const Admin = Loadable(() => import('./Admin'))
@@ -39,7 +39,8 @@ export const mainRoute = [
     {
         pathname: '/login',
         component: Login
-    }, {
+    }, 
+    {
         pathname: '/404',
         component: NotFound
     },
@@ -58,8 +59,20 @@ export const mainRoute = [
     {
         pathname: '/test',
         component: Test
-    },{
+    }, {
         pathname: '/three',
-        component:Three
+        component: Three
     }
+]
+
+export const simpleRouteMap = [
+    { routeName: "Home", routePath: "/home" },
+    { routeName: "SimpleMap", routePath: "/simpleMap" },
+    { routeName: "初等函数", routePath: "/mathFunction" },
+    { routeName: "About", routePath: "/about" },
+    { routeName: "NotFound", routePath: "/404" },
+    { routeName: "Three", routePath: "/three" },
+    { routeName: "admin",routePath:"/admin"},
+    { routeName: "login",routePath:"/login"}
+
 ]

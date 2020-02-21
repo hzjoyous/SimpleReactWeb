@@ -1,28 +1,82 @@
-import React, { Component } from 'react'
-import {NavLink as Link} from 'react-router-dom'
-import { DefaultButton } from 'office-ui-fabric-react'
+// module 依赖
+import React from 'react'
+import { NavLink as Link } from 'react-router-dom'
+import classNames from "classnames";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper'
 
+// components 依赖
+import Parallax from "@/components/Parallax/Parallax"
+import GridItem from "@/components/Grid/GridItem"
+import GridContainer from "@/components/Grid/GridContainer"
 
-export default class index extends Component {
-    render() {
-        return (
-            <>
-            <div className="App" style={{ margin: '0 auto', width: "100%", height: "100%" }}>
-                    <ul>
-                        <li><Link to="/home">Home</Link></li>
-                        <li><Link to="/simpleMap">SimpleMap</Link></li>
-                        <li><Link to="/mathFunction">初等函数</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                        <li><Link to="/404">NotFound</Link></li>
-                        <li><Link to="/three">Three</Link></li>
-                    </ul>
-                <DefaultButton>真正的首页</DefaultButton>
-                
-                    <div style={{ margin: '0 auto' }}>
-                        <a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备17063724号-1</a>
-                    </div>
+// viewLoyouts 依赖
+import Footer from "@/views/Layouts/footer";
+import Header from "@/views/Layouts/Header.js";
+import HeaderLinks from "@/views/Layouts/HeaderLinks.js";
+import {simpleRouteMap} from "@/views/index"
+
+import bd_jpg from "@/assets/img/bd.jpg"
+
+import {mainStyle} from "@/views/simpleStyle.js"
+
+const useStyles = makeStyles(mainStyle);
+
+export default function Simple(props) {
+    const classes = useStyles();
+
+    const { ...rest } = props;
+    const [spacing, setSpacing] = React.useState(2);
+
+    const handleChange = event => {
+        setSpacing(Number(event.target.value));
+    };
+    console.log(handleChange)
+
+    return (
+        <>
+            <Header
+                brand="Simple"
+                rightLinks={<HeaderLinks />}
+                fixed
+                color="transparent"
+                changeColorOnScroll={{
+                    height: 400,
+                    color: "white"
+                }}
+                {...rest}
+            />
+
+            <Parallax image={bd_jpg}>
+                <div className={classes.container}>
+                    <GridContainer>
+                        <GridItem>
+                            <div className={classes.brand}>
+                                <h1 className={classes.title}>Simple</h1>
+                                <h3 className={classes.subtitle}>
+                                    A Badass Material-UI Kit based on Material Design.
+                                </h3>
+                            </div>
+                        </GridItem>
+                    </GridContainer>
                 </div>
-            </>
-        )
-    }
+            </Parallax>
+
+            <div className={classNames(classes.main, classes.mainRaised)}>
+                <Grid item xs={12}>
+                    <Grid container justify="center" spacing={spacing}>
+                        {simpleRouteMap.map(value => (
+                            <Grid key={value} item>
+                                <Link to={value.routePath}><Paper className={classes.paper}>{value.routeName}</Paper> </Link>
+                            </Grid>
+                        ))}
+                    </Grid>
+                </Grid>
+            </div>
+
+            <Footer />
+        </ >
+    )
+
 }
