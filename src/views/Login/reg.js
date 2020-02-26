@@ -1,7 +1,6 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Icon from "@material-ui/core/Icon";
 import { makeStyles } from "@material-ui/core/styles";
-import Email from "@material-ui/icons/Email";
 import People from "@material-ui/icons/People";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
@@ -22,8 +21,7 @@ import CustomInput from "@/components/CustomInput/CustomInput.js";
 import image from "@/assets/img/bg7.jpg"
 
 import { signupPageStyle } from "@/views/simpleStyle.js"
-
-import {login} from "@/requests/request"
+import { reg } from 'src/requests/request';
 
 const useStyles = makeStyles(signupPageStyle)
 
@@ -32,14 +30,17 @@ export default function Login(props) {
     setTimeout(function () {
         setCardAnimation("");
     }, 500);
-    const [firstname, setFirstname] = useState('');
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
+    const [username, setuUsername] = useState('');
+    const [password, setPassword] = useState('')
+    const [repassword, setRepassword] = useState('')
     const classes = useStyles();
     const { ...rest } = props;
     let submitLogin = (e) => {
-        let params = [firstname,email,password]
-        login(params).then((data)=>{console.log(data)})
+        e.preventDefault();
+        if (password !== repassword) {
+            alert('两次输入密码不一致')
+        }
+        reg(username, password).then((response) => { window.localStorage.setItem('accessToken',response.data.accessToken)})
     }
     return (
         <>
@@ -68,9 +69,8 @@ export default function Login(props) {
                             <Card className={classes[cardAnimaton]}>
                                 <form className={classes.form} onSubmit={submitLogin}>
                                     <CardHeader color="primary" className={classes.cardHeader}>
-                                        <h4>Login</h4>
+                                        <h4>reg</h4>
                                     </CardHeader>
-                                    <p className={classes.divider}>Or Be Classical</p>
                                     <CardBody>
                                         <CustomInput
                                             labelText="First Name..."
@@ -85,25 +85,8 @@ export default function Login(props) {
                                                         <People className={classes.inputIconsColor} />
                                                     </InputAdornment>
                                                 ),
-                                                value:firstname,
-                                                onChange:(e)=>{setFirstname(e.target.value)}
-                                            }}
-                                        />
-                                        <CustomInput
-                                            labelText="Email..."
-                                            id="email"
-                                            formControlProps={{
-                                                fullWidth: true
-                                            }}
-                                            inputProps={{
-                                                type: "email",
-                                                endAdornment: (
-                                                    <InputAdornment position="end">
-                                                        <Email className={classes.inputIconsColor} />
-                                                    </InputAdornment>
-                                                ),
-                                                value:email,
-                                                onChange:(e)=>{setEmail(e.target.value)}
+                                                value: username,
+                                                onChange: (e) => { setuUsername(e.target.value) }
                                             }}
                                         />
                                         <CustomInput
@@ -120,8 +103,26 @@ export default function Login(props) {
                                                     </InputAdornment>
                                                 ),
                                                 autoComplete: "off",
-                                                value:password,
-                                                onChange:(e)=>{setPassword(e.target.value)}
+                                                value: password,
+                                                onChange: (e) => { setPassword(e.target.value) }
+                                            }}
+                                        />
+                                        <CustomInput
+                                            labelText="rePassword"
+                                            id="pass2"
+                                            formControlProps={{
+                                                fullWidth: true
+                                            }}
+                                            inputProps={{
+                                                type: "password",
+                                                endAdornment: (
+                                                    <InputAdornment position="end">
+                                                        <Icon className={classes.inputIconsColor}>lock_outline</Icon>
+                                                    </InputAdornment>
+                                                ),
+                                                autoComplete: "off",
+                                                value: repassword,
+                                                onChange: (e) => { setRepassword(e.target.value) }
                                             }}
                                         />
                                     </CardBody>

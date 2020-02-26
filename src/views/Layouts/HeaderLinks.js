@@ -1,7 +1,5 @@
 /*eslint-disable*/
 import React from "react";
-import DeleteIcon from "@material-ui/icons/Delete";
-import IconButton from "@material-ui/core/IconButton";
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
 
@@ -33,13 +31,8 @@ export default function HeaderLinks(props) {
         </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Link to="/222">
-          <Button
-            color="transparent"
-            className={classes.navLink}
-          >
+        <Link to="/login" className={classes.navLink} color="transparent">
             登陆
-        </Button>
         </Link>
       </ListItem>
     </List>

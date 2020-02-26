@@ -7,8 +7,7 @@ import {
     Dashboard,
     Setting,
     mainRoute, simpleRoute
-} from './views'
-import './App.less'
+} from './views/routes.js'
 
 export default class App extends Component {
 

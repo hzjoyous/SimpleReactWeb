@@ -6,7 +6,8 @@
             "@/*": [
                 "src/*"
             ]
-        }
+        },
+         "target": "es6"
     },
     "exclude": [
         "build"

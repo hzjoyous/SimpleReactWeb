@@ -25,11 +25,11 @@ const transition = {
 };
 
 const conatinerFluid = {
-  paddingRight: "15px",
-  paddingLeft: "15px",
+  paddingRight: "5%",
+  paddingLeft: "5%",
   marginRight: "auto",
   marginLeft: "auto",
-  width: "100%"
+  width: "90%"
 };
 const container = {
   ...conatinerFluid,
