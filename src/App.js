@@ -34,10 +34,10 @@ export default class App extends Component {
                 <Switch>
 
                     {/* to do 结构待优化 */}
-                    <Route component={simpleRoute.component} path={simpleRoute.pathname} exact />
+                    <Route component={simpleRoute.component} path={simpleRoute.path} exact />
                     {
                         mainRoute.map((route) => {
-                            return <Route key={route.pathname} component={route.component} path={route.pathname} />
+                            return <Route key={route.path} component={route.component} path={route.path} />
                         })
                     }
                     <Route path="/admin" component={(props) => {

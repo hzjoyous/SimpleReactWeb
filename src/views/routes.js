@@ -26,53 +26,54 @@ export const Setting = Loadable(() => import('./Admin/setting.js'))
 
 
 export const simpleRoute = {
-    pathname: '/',
+    path: '/',
     component: Simple
 }
 
 export const mainRoute = [
     {
-        pathname: '/login',
+        name: "login",
+        path: '/login',
         component: Login
     },
     {
-        pathname: '/404',
+        name: "404",
+        path: '/404',
         component: NotFound
     },
     {
-        pathname: '/about',
+        name: "about",
+        path: '/about',
         component: About
     },
     {
-        pathname: '/mathFunction',
+        name: "mathFunction",
+        path: '/mathFunction',
         component: MathFunction
     },
     {
-        pathname: '/simpleMap',
+        name: "simpleMap",
+        path: '/simpleMap',
         component: SimpleMap
     },
     {
-        pathname: '/test',
+        name: "test",
+        path: '/test',
         component: Test
     },
     {
-        pathname: '/three',
+        name: "three",
+        path: '/three',
         component: Three
     },
     {
-        pathname: '/reg',
+        name: "reg",
+        path: '/reg',
         component: Reg
-    }
-]
-
-export const simpleRouteMap = [
-    { routeName: "SimpleMap", routePath: "/simpleMap" },
-    { routeName: "初等函数", routePath: "/mathFunction" },
-    { routeName: "About", routePath: "/about" },
-    { routeName: "NotFound", routePath: "/404" },
-    { routeName: "Three", routePath: "/three" },
-    { routeName: "admin", routePath: "/admin" },
-    { routeName: "login", routePath: "/login" },
-    { routeName: "reg", routePath: "/reg" },
-
+    },
+    {
+        name: "admin",
+        path: "/admin",
+        component: Admin
+    },
 ]

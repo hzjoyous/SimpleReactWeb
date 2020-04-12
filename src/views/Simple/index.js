@@ -15,7 +15,7 @@ import GridContainer from "@/components/Grid/GridContainer"
 import Footer from "@/views/Layouts/footer";
 import Header from "@/views/Layouts/Header.js";
 import HeaderLinks from "@/views/Layouts/HeaderLinks.js";
-import {simpleRouteMap} from "@/views/routes"
+import {mainRoute} from "@/views/routes"
 
 import bd_jpg from "@/assets/img/bd.jpg"
 
@@ -66,9 +66,9 @@ export default function Simple(props) {
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <Grid item xs={12}>
                     <Grid container justify="center" spacing={spacing}>
-                        {simpleRouteMap.map(value => (
-                            <Grid key={value.routeName} item>
-                                <Link to={value.routePath}><Paper className={classes.paper}>{value.routeName}</Paper> </Link>
+                        {mainRoute.map(value => (
+                            <Grid key={value.name} item>
+                                <Link to={value.path}><Paper className={classes.paper}>{value.name}</Paper> </Link>
                             </Grid>
                         ))}
                     </Grid>

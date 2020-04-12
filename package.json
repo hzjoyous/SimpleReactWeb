@@ -25,6 +25,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "three": "^0.113.2",
+    "tone": "^13.8.25",
     "typescript": "^3.8.2"
   },
   "scripts": {
