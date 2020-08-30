@@ -16,14 +16,14 @@ const SimpleMap = Loadable(() => import('./SimpleMap'))
 const Test = Loadable(() => import('./Test'))
 const Simple = Loadable(() => import('./Simple'))
 const Login = Loadable(() => import('./Login/login'))
-const Three = Loadable(() => import('./Three'))
+const Three = Loadable(() => import('./Three/tree.js'))
 const Reg = Loadable(() => import('./Login/reg'))
 export const Admin = Loadable(() => import('./Admin'))
 export const Article = Loadable(() => import('./Admin/article.js'))
 export const ArticleEdit = Loadable(() => import('./Admin/articleEdit.js'))
 export const Dashboard = Loadable(() => import('./Admin/dashboard.js'))
 export const Setting = Loadable(() => import('./Admin/setting.js'))
-
+export const Canvas = Loadable(() => import('./Canvas/canvas.js'))
 
 export const simpleRoute = {
     path: '/',
@@ -75,5 +75,9 @@ export const mainRoute = [
         name: "admin",
         path: "/admin",
         component: Admin
-    },
+    }, {
+        name: "Canvas",
+        path: "/Canvas",
+        component: Canvas
+    }
 ]
